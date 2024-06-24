@@ -14,11 +14,11 @@ use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
 // Variáveis de acesso
-$host = "roundhouse.proxy.rlwy.net";
+$host = "viaduct.proxy.rlwy.net";
 $user = "root";
-$pass = "lYsmqQEDuzaIiBMdOSFOniKtKzSpIIHd";
+$pass = "fYAOFCYxlvvsNBEOykpAvZqoyoomwzWG";
 $bd = "railway";
-$porta = "58673";
+$porta = "35418";
 
 // Executar conexão
 $conectar = @mysqli_connect($host,$user,$pass,$bd,$porta);
