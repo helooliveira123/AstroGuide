@@ -205,24 +205,34 @@ if (isset($_POST['verificarEmail'])) {
         echo "Mensagem não enviada: {$mail->ErrorInfo}";
     }
 }
-    
-/*
-$email = $_POST['email'];
-$senha = $_POST['senha'];
-$dataNascimento = $_POST['dataNascimento'];
-$imgPerfil = $_POST['imgPerfil'];
-$pontos = $_POST['pontos'];
-$dataCadastro = $_POST['dataCadastro'];
-$idAstro = $_POST['idAstro'];
 
-$sql = "INSERT INTO usuario VALUES ('$nome','$email','$senha',
-'$dataNascimento',$imgPerfil,$pontos,'$dataCadastro',$idAstro)";
+if (isset($_POST['quiz']) {
+    $parametros = $_POST['quiz'];
+    $parametrosDivididos = explode("#|#", $parametros);
+    $nivel = $parametrosDivididos[0];
+    $idAstro = $parametrosDivididos[1];
+    $arrPerguntas = array();
+    $arrAlternativas = array();
+    $arrAlternativasCertas = array();
 
-if (mysqli_query($conectar,$sql)) {
-    echo "sucesso";
+    $sql = "SELECT * FROM Quiz WHERE Nivel = $nivel AND Id_Astro = $idAstro";
+
+    $quizEncontrado = mysqli_query($conectar,$sql);
+
+    $idQuiz = $quizEncontrado['Id_Quiz'];
+
+    $sql2  = "SELECT * FROM Pergunta WHERE Id_Quiz = $idQuiz";
+    $perguntasEncontradas = mysqli_query($conectar,$sql2);
+
+    if ($perguntasEncontradas) {
+        mysqli_data_seek($perguntasEncontradas, 0);
+        while ($row = mysqli_fetch_assoc($perguntasEncontradas)) {
+            array_push($arrPerguntas, $row['Texto']);
+            array_push($arrAlternativas, $row['alternativa_1'], $row['alternativa_2'], $row['alternativa_3'], "###");
+            array_push($arrAlternativasCertas, $row['Alternativa_Certa'], "###");
+        }
+        
+         echo "$arrPerguntas@@@@$arrAlternativas@@@@$arrAlternativasCertas";      
+    }
 }
-else {
-    echo "erro";
-}
-*/
 ?>
