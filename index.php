@@ -206,7 +206,7 @@ if (isset($_POST['verificarEmail'])) {
     }
 }
 
-if (isset($_POST['quiz']) {
+if (isset($_POST['quiz'])) {
     $parametros = $_POST['quiz'];
     $parametrosDivididos = explode("#|#", $parametros);
     $nivel = $parametrosDivididos[0];
