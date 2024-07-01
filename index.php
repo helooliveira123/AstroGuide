@@ -219,7 +219,9 @@ if (isset($_POST['quiz'])) {
 
     $quizEncontrado = mysqli_query($conectar,$sql);
 
-    $idQuiz = $quizEncontrado['Id_Quiz'];
+    $row = mysqli_fetch_assoc($quizEncontrado);
+    
+    $idQuiz = $row['Id_Quiz'];
 
     $sql2  = "SELECT * FROM Pergunta WHERE Id_Quiz = $idQuiz";
     $perguntasEncontradas = mysqli_query($conectar,$sql2);
