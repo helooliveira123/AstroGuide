@@ -230,7 +230,7 @@ if (isset($_POST['quiz'])) {
         mysqli_data_seek($perguntasEncontradas, 0);
         while ($row = mysqli_fetch_assoc($perguntasEncontradas)) {
             array_push($arrPerguntas, $row['Texto']);
-            array_push($arrAlternativas, $row['alternativa_1'], $row['alternativa_2'],$row['alternativa_3'],"###");
+            array_push($arrAlternativas, $row['alternativa_1'], $row['alternativa_2'],$row['alternativa_3']);
             array_push($arrAlternativasCertas, $row['Alternativa_Certa']);
         }
         $stringPerguntas = implode("-",$arrPerguntas);
