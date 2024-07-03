@@ -239,4 +239,29 @@ if (isset($_POST['quiz'])) {
          echo "$stringPerguntas@@@@$stringAlternativas@@@@$stringAlternativasCertas";      
     }
 }
+
+if (isset($_POST['alterarNome'])) {
+    $parametros = $_POST['alterarNome'];
+    $parametrosDivididos = explode("#|#", $parametros);
+    $email = $parametrosDivididos[0];
+    $nome = $parametrosDivididos[1];
+    $sql = "UPDATE Usuario SET Nome = ? WHERE Email_Responsavel = ?";
+    $verificarInjection = $conectar->prepare($sql);
+    if ($verificarInjection) {
+        $verificarInjection->bind_param("ss",$nome,$email);
+        
+        if ($verificarInjection->execute()) {
+            if ($verificarInjection->affected_rows > 0) {
+                echo "alterado";
+            }
+            else {
+                echo "inalterado";
+            }
+        }
+     
+    $verificarInjection->close();
+
+    }
+}
+
 ?>
