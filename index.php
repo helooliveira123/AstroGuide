@@ -245,7 +245,7 @@ if (isset($_POST['alterarNome'])) {
     $parametrosDivididos = explode("#|#", $parametros);
     $email = $parametrosDivididos[0];
     $nome = $parametrosDivididos[1];
-    $sql = "UPDATE Usuario SET Nome = ? WHERE Email_Responsavel = ?";
+    $sql = "UPDATE Usuario SET Nome_Usuario = ? WHERE Email_Responsavel = ?";
     $verificarInjection = $conectar->prepare($sql);
     if ($verificarInjection) {
         $verificarInjection->bind_param("ss",$nome,$email);
