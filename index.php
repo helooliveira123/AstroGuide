@@ -265,4 +265,28 @@ if (isset($_POST['alterarNome'])) {
     }
 }
 
+if (isset($_POST['passarNivel'])) {
+    $parametros = $_POST['passarNivel'];
+    $parametrosDivididos = explode("#|#", $parametros);
+    $email = $parametrosDivididos[0];
+    $nivel = $parametrosDivididos[1];
+    $sql = "UPDATE Usuario SET Nivel_Atual = ? WHERE Email_Responsavel = ?";
+    $verificarInjection = $conectar->prepare($sql);
+    if ($verificarInjection) {
+        $verificarInjection->bind_param("ss",$nivel,$email);
+        
+        if ($verificarInjection->execute()) {
+            if ($verificarInjection->affected_rows > 0) {
+                echo "alterado";
+            }
+            else {
+                echo "inalterado";
+            }
+        }
+     
+    $verificarInjection->close();
+
+    }
+}
+
 ?>
