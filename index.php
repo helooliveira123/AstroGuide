@@ -107,7 +107,8 @@ if (isset($_POST['login'])) {
             $pontuacao = $linha['Total_Pontuacao'];
             $dtCadastro = $linha['Dt_Cadastro'];
             $astroAtual = $linha['Id_Astro'];
-            echo "logado####$nomeUsuario####$imgUsuario####$senha####$dtNascimento####$pontuacao####$dtCadastro####$astroAtual";
+            $nivelAtual = $linha['Nivel_Atual'];
+            echo "logado####$nomeUsuario####$imgUsuario####$senha####$dtNascimento####$pontuacao####$dtCadastro####$astroAtual####$nivelAtual";
         } else {
             echo "senha invalida";
         }
