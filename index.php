@@ -270,10 +270,12 @@ if (isset($_POST['passarNivel'])) {
     $parametrosDivididos = explode("#|#", $parametros);
     $email = $parametrosDivididos[0];
     $nivel = $parametrosDivididos[1];
-    $sql = "UPDATE Usuario SET Nivel_Atual = ? WHERE Email_Responsavel = ?";
+    $pontos = $parametrosDivididos[2];
+
+    $sql = "UPDATE Usuario SET Nivel_Atual = ? AND Total_Pontuacao = ? WHERE Email_Responsavel = ?";
     $verificarInjection = $conectar->prepare($sql);
     if ($verificarInjection) {
-        $verificarInjection->bind_param("ss",$nivel,$email);
+        $verificarInjection->bind_param("sss",$nivel,$pontos,$email);
         
         if ($verificarInjection->execute()) {
             if ($verificarInjection->affected_rows > 0) {
