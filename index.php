@@ -291,4 +291,28 @@ if (isset($_POST['passarNivel'])) {
     }
 }
 
+if (isset($_POST['buscarPalavras'])) {
+
+    $sql = "SELECT * FROM Palavra ORDER BY LENGTH(Texto) ASC;";
+    $palavrasEncontradas = mysqli_query($conectar,$sql);
+
+    $arrPalavras = array();
+    $arrSignificados = array();
+    $arrIMGs = array();
+    
+    if ($palavrasEncontradas) {
+        mysqli_data_seek($palavrasEncontradas, 0);
+        while ($row = mysqli_fetch_assoc($palavrasEncontradas)) {
+            array_push($arrPalavras, $row['Texto']);
+            array_push($arrSignificados, $row['Significado']);
+            array_push($arrIMGs, $row['Imagem']);
+        }
+        $stringPalavras = implode("-",$arrPalavras);
+        $stringSignificados = implode("-",$arrSignificados);
+        $stringIMGs = implode("-",$arrIMGs);
+        echo "$stringPalavras@@@@$stringSignificados@@@@$stringIMGs";      
+    }
+}
+
+
 ?>
