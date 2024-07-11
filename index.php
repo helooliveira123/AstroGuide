@@ -307,9 +307,9 @@ if (isset($_POST['buscarPalavras'])) {
             array_push($arrSignificados, $row['Significado']);
             array_push($arrIMGs, $row['Imagem']);
         }
-        $stringPalavras = implode("|||",$arrPalavras);
-        $stringSignificados = implode("|||",$arrSignificados);
-        $stringIMGs = implode("|||",$arrIMGs);
+        $stringPalavras = implode(">>",$arrPalavras);
+        $stringSignificados = implode(">>",$arrSignificados);
+        $stringIMGs = implode(">>",$arrIMGs);
         echo "$stringPalavras@@@@$stringSignificados@@@@$stringIMGs";      
     }
 }
